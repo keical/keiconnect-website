@@ -1,0 +1,28 @@
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Link } from "react-router-dom";
+
+export default function AttendancePage() {
+    return (
+        <main className="flex flex-col min-h-screen p-7">
+            <div className="heading mb-10">
+                <h1 className="text-3xl font-bold">Your Attendance</h1>
+                <p className="text-muted-foreground mt-2">Monitor your attendance records with ease</p>
+                <Breadcrumb className="mt-5">
+                <BreadcrumbList>
+                    <BreadcrumbItem>
+                        <BreadcrumbLink asChild>
+                            <Link to="/dashboard">
+                            Dashboard
+                            </Link>
+                        </BreadcrumbLink>
+                    </BreadcrumbItem>
+                    <BreadcrumbSeparator />
+                    <BreadcrumbItem>
+                        <BreadcrumbPage>Attendance</BreadcrumbPage>
+                    </BreadcrumbItem>
+                </BreadcrumbList>
+                </Breadcrumb>
+            </div>
+        </main>
+    );
+}
