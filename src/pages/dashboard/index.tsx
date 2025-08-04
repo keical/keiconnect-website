@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useIsAuthorized } from "@/services/auth-checker";
 import { Loader2 } from "lucide-react";
+import { Head } from "@unhead/react";
 
 export default function DashboardPage() {
     const navigate = useNavigate();
@@ -14,10 +15,6 @@ export default function DashboardPage() {
         }
     }, [isAuthenticating, isAuthenticated, navigate]);
 
-    useEffect(() => {
-        document.title = `Dashboard - ${VITE_APP_SITENAME}`;
-    }, []);
-
     if (isAuthenticating) {
         return (
             <main className="flex min-h-screen flex-col items-center justify-center p-16">
@@ -28,6 +25,9 @@ export default function DashboardPage() {
 
     return (
         <main className="flex flex-col min-h-screen p-7">
+            <Head>
+                <title>Dashboard - {VITE_APP_SITENAME}</title>
+            </Head>
             <h1 className="text-3xl font-bold mb-2">Hi, {userData?.name}</h1>
             <p className="text-sm font-semibold">Welcome to {VITE_APP_SITENAME} Dashboard</p>
         </main>

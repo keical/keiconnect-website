@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@/index.css";
 import App from "@/App.tsx";
 import TanstackProvider from "@/helpers/tanstack-provider";
+import { createHead, UnheadProvider } from "@unhead/react/client";
 import RootLayout from "@/layouts/root";
 import DashboardLayout from "@/layouts/dashboard";
 import HomePage from "@/pages/home";
@@ -16,27 +17,31 @@ import ProfilePage from "@/pages/dashboard/profile";
 import SecurityPage from "@/pages/dashboard/security";
 import AttendancePage from "@/pages/dashboard/attendance";
 
+const head = createHead();
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <TanstackProvider>
-        <App>
-          <Routes>
-            <Route path="/" element={<RootLayout />}>
-              <Route index element={<HomePage />} />
-              <Route path="/signup" element={<SignupPage />} />
-              <Route path="/resend-verification" element={<ResendVerificationPage />} />
-              <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-              <Route path="/login" element={<LoginPage />} />
-            </Route>
-            <Route path="/dashboard" element={<DashboardLayout />}>
-              <Route index element={<DashboardPage />} />
-              <Route path="/dashboard/attendance" element={<AttendancePage />} />
-              <Route path="/dashboard/security" element={<SecurityPage />} />
-              <Route path="/dashboard/profile" element={<ProfilePage />} />
-            </Route>
-          </Routes>
-        </App>
+        <UnheadProvider head={head}>
+          <App>
+            <Routes>
+              <Route path="/" element={<RootLayout />}>
+                <Route index element={<HomePage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route path="/resend-verification" element={<ResendVerificationPage />} />
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                <Route path="/login" element={<LoginPage />} />
+              </Route>
+              <Route path="/dashboard" element={<DashboardLayout />}>
+                <Route index element={<DashboardPage />} />
+                <Route path="/dashboard/attendance" element={<AttendancePage />} />
+                <Route path="/dashboard/security" element={<SecurityPage />} />
+                <Route path="/dashboard/profile" element={<ProfilePage />} />
+              </Route>
+            </Routes>
+          </App>
+        </UnheadProvider>
       </TanstackProvider>
     </BrowserRouter>
   </StrictMode>

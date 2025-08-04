@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import PasswordInput from "@/components/ui/custom/password-input";
 import { Loader2 } from "lucide-react";
+import { Head } from "@unhead/react";
 
 const signupFormSchema = z.object({
     name: z.string().min(1, { message: "Name is required" }),
@@ -38,10 +39,6 @@ export default function SignupPage() {
             navigate('/dashboard');
         }
     }, [isAuthenticating, isAuthenticated, navigate]);
-
-    useEffect(() => {
-        document.title = `Signup - ${VITE_APP_SITENAME}`;
-    }, []);
 
     const signupForm = useForm<z.infer<typeof signupFormSchema>>({
         resolver: zodResolver(signupFormSchema),
@@ -95,6 +92,9 @@ export default function SignupPage() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-16">
+            <Head>
+                <title>Signup - {VITE_APP_SITENAME}</title>
+            </Head>
             <Card className="w-full sm:w-[70%] md:w-[60%] lg:w-[40%] xl:w-[30%]">
                 <CardHeader>
                     <CardTitle>Signup</CardTitle>

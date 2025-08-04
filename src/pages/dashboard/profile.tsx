@@ -21,6 +21,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import PasswordInput from "@/components/ui/custom/password-input";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Camera, Loader2, Trash, TriangleAlert } from "lucide-react";
+import { Head } from "@unhead/react";
 
 const MAX_FILE_SIZE = 1024 * 200; // 200KB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"]; // Only jpeg, png and webp formats are allowed
@@ -52,10 +53,6 @@ export default function ProfilePage() {
             navigate('/login');
         }
     }, [isAuthenticating, isAuthenticated, navigate]);
-
-    useEffect(() => {
-        document.title = `Profile - ${VITE_APP_SITENAME}`;
-    }, []);
 
     const updateProfileForm = useForm<z.infer<typeof updateProfileFormSchema>>({
         resolver: zodResolver(updateProfileFormSchema),
@@ -192,6 +189,9 @@ export default function ProfilePage() {
 
     return (
         <main className="flex flex-col min-h-screen p-7">
+            <Head>
+                <title>Profile - {VITE_APP_SITENAME}</title>
+            </Head>
             <div className="profile-overview w-full flex">
                 <div className="flex items-center mr-10">
                     <Avatar className="h-28 w-28 hover:cursor-pointer">

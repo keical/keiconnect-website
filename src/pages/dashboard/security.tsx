@@ -19,6 +19,7 @@ import { useGetLoginHistory } from "@/services/queries";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatTimestamp } from "@/helpers/utils";
 import { Loader2 } from "lucide-react";
+import { Head } from "@unhead/react";
 
 const changePasswordFormSchema = z.object({
     currentPassword: z.string().min(6, { message: "Password must be at least 6 characters long" }),
@@ -36,10 +37,6 @@ export default function SecurityPage () {
             navigate('/login');
         }
     }, [isAuthenticating, isAuthenticated, navigate]);
-
-    useEffect(() => {
-        document.title = `Security - ${VITE_APP_SITENAME}`;
-    }, []);
 
     const [loginHistoryData, setLoginHistoryData] = useState<{
         isFetching: boolean,
@@ -102,6 +99,9 @@ export default function SecurityPage () {
 
     return (
         <main className="flex flex-col min-h-screen p-7">
+            <Head>
+                <title>Security - {VITE_APP_SITENAME}</title>
+            </Head>
             <div className="heading mb-10">
                 <h1 className="text-3xl font-bold">Security Settings</h1>
                 <p className="text-muted-foreground mt-2">Monitor and control your account's security in one place</p>

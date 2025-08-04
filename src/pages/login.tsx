@@ -18,6 +18,7 @@ import { toast } from "sonner";
 import RecoveryDialog from "@/components/recovery-dialog";
 import PasswordInput from "@/components/ui/custom/password-input";
 import { Loader2 } from "lucide-react";
+import { Head } from "@unhead/react";
 
 const loginFormSchema = z.object({
   email: z.email({
@@ -39,10 +40,6 @@ export default function LoginPage() {
             navigate('/dashboard');
         }
     }, [isAuthenticating, isAuthenticated, navigate]);
-
-    useEffect(() => {
-        document.title = `Login - ${VITE_APP_SITENAME}`;
-    }, []);
     
     const loginForm = useForm<z.infer<typeof loginFormSchema>>({
         resolver: zodResolver(loginFormSchema),
@@ -96,6 +93,9 @@ export default function LoginPage() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-16">
+            <Head>
+                <title>Login - {VITE_APP_SITENAME}</title>
+            </Head>
             <Card className="w-full sm:w-[70%] md:w-[60%] lg:w-[40%] xl:w-[30%]">
                 <CardHeader>
                     <CardTitle>Login</CardTitle>

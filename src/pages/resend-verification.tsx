@@ -14,6 +14,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { Head } from "@unhead/react";
 
 const resendVerificationFormSchema = z.object({
     email: z.email({
@@ -34,10 +35,6 @@ export default function ResendVerificationPage() {
             navigate('/dashboard');
         }
     }, [isAuthenticating, isAuthenticated, navigate]);
-
-    useEffect(() => {
-        document.title = `Resend Verifiaction - ${VITE_APP_SITENAME}`;
-    }, []);
 
     const resendVerificationForm = useForm<z.infer<typeof resendVerificationFormSchema>>({
         resolver: zodResolver(resendVerificationFormSchema),
@@ -88,6 +85,9 @@ export default function ResendVerificationPage() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-16">
+            <Head>
+                <title>Resend Verification - {VITE_APP_SITENAME}</title>
+            </Head>
             <Card className="w-full sm:w-[70%] md:w-[60%] lg:w-[40%] xl:w-[30%] mt-16">
                 <CardHeader>
                     <CardTitle>Resend Verfication</CardTitle>
