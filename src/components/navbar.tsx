@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ModeToggle } from "@/components/mode-toggle";
-import { BarChart, LogOut, User } from "lucide-react";
+import { SlidersVertical, LogOut, User } from "lucide-react";
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -49,7 +49,7 @@ export default function Navbar() {
                             <DropdownMenuSeparator />
                             <DropdownMenuItem className="hover:cursor-pointer" asChild>
                                 <Link to="/dashboard">
-                                    <BarChart className="w-4 h-4 mr-3"/>
+                                    <SlidersVertical className="w-4 h-4 mr-3"/>
                                     Dashboard
                                 </Link>
                             </DropdownMenuItem>
