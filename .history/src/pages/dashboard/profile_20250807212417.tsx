@@ -39,13 +39,10 @@ const updateProfileFormSchema = z.object({
 });
 
 const changeEmailFormSchema = z.object({
-  newEmail: z.string()
-    .email({ message: "Invalid email address" })
-    .min(1, { message: "Email is required" }),
-  password: z.string()
-    .min(1, { message: "Password is required" }),
+    newEmail: z
+    .string()({ required_error: "Email is required" })
+    .email:("Invalid email address")
 });
-
 
 export default function ProfilePage() {
     const navigate = useNavigate();
