@@ -22,8 +22,6 @@ import PasswordInput from "@/components/ui/custom/password-input";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Camera, Loader2, Trash, TriangleAlert } from "lucide-react";
 import { Head } from "@unhead/react";
-import { error } from "console";
-import { issue } from "node_modules/zod/v4/core/util.d.cts";
 
 const MAX_FILE_SIZE = 1024 * 200; // 200KB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"]; // Only jpeg, png and webp formats are allowed
@@ -40,19 +38,15 @@ const updateProfileFormSchema = z.object({
     .optional(),
 });
 
-
-
 const changeEmailFormSchema = z.object({
   newEmail: z.email({
-    error: (issue) =>
-      issue.input === undefined ||
-      issue.input === null ||
-      issue.input === ""
+    error: (issue) => issue.input === undefined || issue.input === null || issue.input === ""
       ? "Email is required"
       : "Invalid email address",
   }),
   password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
 });
+
 
 
 export default function ProfilePage() {
