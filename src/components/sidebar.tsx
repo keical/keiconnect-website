@@ -2,8 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, /*SidebarSeparator,*/ useSidebar } from "@/components/ui/sidebar";
 import { isActiveSidebarItem, logout } from "@/helpers/utils";
 import type { SidebarItem } from "@/types/sidebar";
-import { CircleCheckBig, LogOut, ShieldCheck, SlidersVertical, User } from "lucide-react";
- 
+import { CircleCheckBig, LogOut, ShieldCheck, SlidersVertical, User, GalleryVerticalEnd } from "lucide-react";
+
 export function AppSidebar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,7 +34,25 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <span className="text-center text-xl font-bold my-2">{open ? VITE_APP_SITENAME : VITE_APP_SITENAME?.substring(0, 1)}</span>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <a href="#">
+                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <img
+                    src="/src/assets/kingston_svg.svg"
+                    alt="kingston"
+                    className="size-8.5 rounded-full"
+                  />
+                </div>
+                <div className="flex flex-col gap-0.5 leading-none">
+                  <span className="font-medium">KEIConnect</span>
+                  <span className="">Kingston Educational Institute</span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       {/* <SidebarSeparator /> */}
       <SidebarContent>
