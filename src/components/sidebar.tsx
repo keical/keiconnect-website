@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, /*SidebarSeparator,*/ useSidebar } from "@/components/ui/sidebar";
 import { isActiveSidebarItem, logout } from "@/helpers/utils";
 import type { SidebarItem } from "@/types/sidebar";
-import { CircleCheckBig, LogOut, ShieldCheck, SlidersVertical, User, GalleryVerticalEnd } from "lucide-react";
+import { CircleCheckBig, LogOut, ShieldCheck, SlidersVertical, User} from "lucide-react";
 
 export function AppSidebar() {
   const navigate = useNavigate();
