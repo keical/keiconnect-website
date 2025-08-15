@@ -23,7 +23,7 @@ export default function RecoveryDialog() {
         <DialogTrigger asChild>
             <span className="flex justify-center items-center">
                 <Info className="h-4 w-4 mt-[0.20rem] mr-1" />
-                <p className="text-sm underline font-bold cursor-pointer">Rocovery</p>
+                <p className="text-sm underline font-bold cursor-pointer">Recovery</p>
             </span>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
