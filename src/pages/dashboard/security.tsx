@@ -123,7 +123,7 @@ export default function SecurityPage () {
             </div>
             <div className="security-settings">
                 <Tabs defaultValue="auth" className="">
-                    <TabsList className="grid min-h-fit grid-cols-1 sm:grid-cols-2 lg:block lg:w-fit">
+                    <TabsList>
                         <TabsTrigger value="auth">Authentication</TabsTrigger>
                         <TabsTrigger value="login-history">Login History</TabsTrigger>
                     </TabsList>

@@ -3,6 +3,7 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupConte
 import { isActiveSidebarItem, logout } from "@/helpers/utils";
 import type { SidebarItem } from "@/types/sidebar";
 import { CircleCheckBig, LogOut, ShieldCheck, SlidersVertical, User } from "lucide-react";
+import { KeiLogo } from "@/components/icons/kei-logo";
  
 export function AppSidebar() {
   const navigate = useNavigate();
@@ -34,7 +35,21 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <span className="text-center text-xl font-bold my-2">{open ? VITE_APP_SITENAME : VITE_APP_SITENAME?.substring(0, 1)}</span>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <button>
+                <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                  <KeiLogo className="rounded-lg" />
+                </div>
+                <div className="flex flex-col gap-0.5 leading-none">
+                  <span className="font-medium">{VITE_APP_SITENAME}</span>
+                  <span className="text-xs">Kingston Educational Institute</span>
+                </div>
+              </button>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       {/* <SidebarSeparator /> */}
       <SidebarContent>
